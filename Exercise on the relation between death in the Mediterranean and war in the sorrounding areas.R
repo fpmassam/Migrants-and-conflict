@@ -113,6 +113,7 @@ clean = function(x){if(nrow(x) == 0) {rm(x)}
 
 med_list = split(med_df, f = med_df$country)
 med_list = lag_list(med_list)
+med_list = lapply(med_list, na.omit)
 med_list = lapply(med_list, clean)
 med_list <- med_list[!sapply(med_list,is.null)]
 reg_lag = lm_list(med_list)
